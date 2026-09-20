@@ -4,6 +4,7 @@ import SearchResults from "./SearchResults";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import PaymentPage from "./payments/PaymentPage";
+import PaymentSuccess from "./payments/PaymentSuccess";
 
 
 /* =========================================================
@@ -232,6 +233,12 @@ function App() {
           path="/payment"
           element={<PaymentPage />}
         />
+
+      {/* payment success */}
+        <Route
+          path="/payment-success"
+            element={<PaymentSuccess />}
+          />
 
       </Routes>
 

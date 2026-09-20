@@ -1,7 +1,9 @@
-
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const PaymentPage = () => {
+    const navigate = useNavigate();
   // Sample payment data
   const bookingAmount = 50000;
   const propertyPrice = 7500000;
@@ -30,9 +32,9 @@ const PaymentPage = () => {
       return;
     }
 
-    alert(
-      `Payment process started using ${selectedMethod}.\nAmount: ₹${bookingAmount.toLocaleString("en-IN")}`
-    );
+    alert("Payment successful!");
+
+    navigate("/payment-success");
   };
 
   return (
