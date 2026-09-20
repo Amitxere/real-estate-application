@@ -1,15 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import "../App.css";
 
 function Navbar() {
   const navigate = useNavigate();
 
   return (
     <header className="navbar">
-
       <div className="navbar-container">
 
         {/* LOGO */}
-
         <div
           className="navbar-logo"
           onClick={() => navigate("/")}
@@ -24,9 +23,7 @@ function Navbar() {
           </div>
         </div>
 
-
         {/* NAVIGATION */}
-
         <nav className="navbar-links">
 
           <NavLink
@@ -66,15 +63,6 @@ function Navbar() {
           </NavLink>
 
           <NavLink
-            to="/agents"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Agents
-          </NavLink>
-
-          <NavLink
             to="/contact"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
@@ -85,20 +73,16 @@ function Navbar() {
 
         </nav>
 
-
         {/* RIGHT SIDE */}
-
         <div className="navbar-actions">
 
           <button
             className="favorite-nav-button"
             onClick={() => navigate("/favorites")}
-            title="Favorites"
           >
             ♡
             <span className="favorite-count">0</span>
           </button>
-
 
           <button
             className="login-button"
@@ -106,7 +90,6 @@ function Navbar() {
           >
             Login
           </button>
-
 
           <button
             className="register-button"
@@ -118,7 +101,6 @@ function Navbar() {
         </div>
 
       </div>
-
     </header>
   );
 }
