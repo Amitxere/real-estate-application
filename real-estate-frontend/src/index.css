@@ -30,7 +30,7 @@ button {
 ========================= */
 
 .navbar {
-  height: 72px;
+  height: 85px;
   background: #ffffff;
   border-bottom: 1px solid #e7eaf0;
   position: relative;
@@ -863,4 +863,140 @@ button {
     grid-template-columns: 1fr;
   }
 
+}
+
+/* Payment Page */
+
+.payment-page {
+  min-height: 100vh;
+  padding: 40px 8%;
+  background: #f4f7fc;
+  font-family: Arial, sans-serif;
+}
+
+.payment-page h1 {
+  color: #172554;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.payment-page > p {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.payment-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.payment-card,
+.summary-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.payment-card h2,
+.summary-card h2 {
+  color: #172554;
+  margin-bottom: 20px;
+}
+
+.payment-card h3 {
+  color: #2563eb;
+  font-size: 24px;
+}
+
+.payment-card p,
+.summary-card p {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.payment-card input {
+  width: 30%;
+  padding: 13px;
+  margin: 5px;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.payment-method {
+  padding: 14px 25px;
+  margin: 5px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.payment-method:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.pay-button {
+  width: 100%;
+  padding: 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pay-button:hover {
+  background: #1d4ed8;
+}
+
+.summary-card {
+  border-top: 4px solid #2563eb;
+}
+
+.summary-card h2:last-of-type {
+  color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card input {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.selected-method {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+.payment-card input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+.pay-button:hover {
+  transform: translateY(-1px);
+  transition: 0.2s;
 }

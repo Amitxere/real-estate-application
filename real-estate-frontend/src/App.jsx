@@ -3,6 +3,7 @@ import Home from "./Home";
 import SearchResults from "./SearchResults";
 import Navbar from "./components/Navbar";
 import "./index.css";
+import PaymentPage from "./payments/PaymentPage";
 
 
 /* =========================================================
@@ -224,6 +225,12 @@ function App() {
         <Route
           path="/contact"
           element={<Contact />}
+        />
+
+        {/* PAYMENT */}
+        <Route
+          path="/payment"
+          element={<PaymentPage />}
         />
 
       </Routes>
