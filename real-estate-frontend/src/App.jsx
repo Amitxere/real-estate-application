@@ -10,6 +10,7 @@ import AnalyticsDashboard from "./analytics/AnalyticsDashboard";
 import PaymentReceipt from "./receipt/PaymentReceipt";
 import BookingsPage from "./bookings/BookingsPage";
 import PaymentFailure from "./payments/PaymentFailure";
+import TransactionHistory from "./transactions/TransactionHistory";
 
 
 /* =========================================================
@@ -275,6 +276,11 @@ function App() {
          element={<PaymentFailure />}
        />
 
+      {/* transactions */}
+      <Route
+        path="/transactions"
+        element={<TransactionHistory />}
+      />
 
       </Routes>
 
