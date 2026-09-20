@@ -8,6 +8,8 @@ import PaymentSuccess from "./payments/PaymentSuccess";
 import DocumentsPage from "./payments/DocumentsPage";
 import AnalyticsDashboard from "./analytics/AnalyticsDashboard";
 import PaymentReceipt from "./receipt/PaymentReceipt";
+import BookingsPage from "./bookings/BookingsPage";
+import PaymentFailure from "./payments/PaymentFailure";
 
 
 /* =========================================================
@@ -260,6 +262,19 @@ function App() {
        path="/payment-receipt"
        element={<PaymentReceipt />}
       />
+
+      {/* bookings pagw */}
+      <Route
+       path="/bookings"
+       element={<BookingsPage />}
+     />
+
+    {/* payment failur */}
+       <Route
+         path="/payment-failure"
+         element={<PaymentFailure />}
+       />
+
 
       </Routes>
 

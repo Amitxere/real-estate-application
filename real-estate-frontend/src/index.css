@@ -1654,3 +1654,186 @@ button {
     max-width: 100%;
   }
 }
+
+
+/* My Bookings Page */
+
+.bookings-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 40px 20px;
+}
+
+.bookings-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.bookings-container h1 {
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bookings-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 35px;
+}
+
+.bookings-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.booking-card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+.booking-image {
+  min-width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  border-radius: 12px;
+  font-size: 45px;
+}
+
+.booking-info {
+  flex: 1;
+}
+
+.booking-info h2 {
+  color: #1e3a8a;
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+.booking-info p {
+  color: #555;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.booking-details {
+  margin-top: 15px;
+}
+
+.booking-status {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.booking-status.confirmed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.booking-status.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .bookings-list {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-card {
+    flex-direction: column;
+  }
+
+  .booking-image {
+    width: 100%;
+  }
+}
+
+
+/* Payment Failure Page */
+
+.payment-failure-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.failure-card {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+}
+
+.failure-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  background: #dc2626;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.failure-card h1 {
+  color: #dc2626;
+  margin-bottom: 15px;
+}
+
+.failure-card p {
+  color: #666;
+  margin: 12px 0;
+}
+
+.failure-card h2 {
+  color: #222;
+  margin: 25px 0;
+}
+
+.failure-card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.failure-card button:hover {
+  background: #1d4ed8;
+}
+
+.failure-card .failure-home-button {
+  background: #6b7280;
+}
+
+.failure-card .failure-home-button:hover {
+  background: #4b5563;
+}
