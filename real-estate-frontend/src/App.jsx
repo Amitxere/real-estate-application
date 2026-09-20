@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import "./index.css";
 import PaymentPage from "./payments/PaymentPage";
 import PaymentSuccess from "./payments/PaymentSuccess";
+import DocumentsPage from "./payments/DocumentsPage";
 
 
 /* =========================================================
@@ -239,6 +240,12 @@ function App() {
           path="/payment-success"
             element={<PaymentSuccess />}
           />
+
+          {/* Documents page */}
+          <Route
+           path="/documents"
+           element={<DocumentsPage />}
+          />         
 
       </Routes>
 
