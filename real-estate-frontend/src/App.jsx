@@ -6,6 +6,8 @@ import "./index.css";
 import PaymentPage from "./payments/PaymentPage";
 import PaymentSuccess from "./payments/PaymentSuccess";
 import DocumentsPage from "./payments/DocumentsPage";
+import AnalyticsDashboard from "./analytics/AnalyticsDashboard";
+import PaymentReceipt from "./receipt/PaymentReceipt";
 
 
 /* =========================================================
@@ -245,9 +247,23 @@ function App() {
           <Route
            path="/documents"
            element={<DocumentsPage />}
-          />         
+          />   
+
+               {/*analytics page  */}
+          <Route
+          path="/analytics"
+          element={<AnalyticsDashboard />}
+         /> 
+
+          {/* receipt */}
+      <Route
+       path="/payment-receipt"
+       element={<PaymentReceipt />}
+      />
 
       </Routes>
+
+     
 
     </BrowserRouter>
 

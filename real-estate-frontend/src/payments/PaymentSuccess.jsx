@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PaymentSuccess = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="payment-success-page">
       <div className="success-card">
@@ -18,6 +21,13 @@ const PaymentSuccess = () => {
 
         <button onClick={() => (window.location.href = "/")}>
           Back to Home
+        </button>
+
+        <button
+          className="print-receipt-button"
+          onClick={() => navigate("/payment-receipt")}
+        >
+          View Payment Receipt
         </button>
       </div>
     </div>
