@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 const properties = [
@@ -13,7 +12,7 @@ const properties = [
     baths: 3,
     area: "2,400 sq.ft",
     image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 2,
@@ -25,7 +24,7 @@ const properties = [
     baths: 2,
     area: "1,650 sq.ft",
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 3,
@@ -49,7 +48,7 @@ const properties = [
     baths: 3,
     area: "2,100 sq.ft",
     image:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 5,
@@ -61,7 +60,7 @@ const properties = [
     baths: 4,
     area: "2,800 sq.ft",
     image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 6,
@@ -77,293 +76,87 @@ const properties = [
   },
 ];
 
-const cities = [
-  {
-    name: "Bengaluru",
-    image:
-      "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    name: "Mumbai",
-    image:
-      "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    name: "Pune",
-    image:
-      "https://images.unsplash.com/photo-1595658658481-d53d3f999875?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    name: "Hyderabad",
-    image:
-      "https://images.unsplash.com/photo-1572445271230-a78b5944a659?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    name: "Delhi",
-    image:
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    name: "Chennai",
-    image:
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=500&q=80",
-  },
-];
-
 function Buy() {
-  const navigate = useNavigate();
-
   const [location, setLocation] = useState("");
-  const [city, setCity] = useState("All Cities");
-  const [category, setCategory] = useState("");
-  const [budget, setBudget] = useState("");
-  const [activeTab, setActiveTab] = useState("list");
+  const [category, setCategory] = useState("All");
+  const [budget, setBudget] = useState("All");
 
   const filteredProperties = properties.filter((property) => {
     const locationMatch =
-      location.trim() === "" ||
-      property.location
-        .toLowerCase()
-        .includes(location.trim().toLowerCase());
-
-    const cityMatch =
-      city === "All Cities" || property.location === city;
+      location === "" ||
+      property.location.toLowerCase().includes(location.toLowerCase());
 
     const categoryMatch =
-      category === "" || property.category === category;
+      category === "All" || property.category === category;
 
     let budgetMatch = true;
 
-    if (budget === "Below ₹50 Lakhs") {
-      budgetMatch = property.price === "₹45 Lakhs";
-    }
-
-    if (budget === "₹50 Lakhs - ₹1 Crore") {
+    if (budget === "Under 50 Lakhs") {
       budgetMatch =
-        property.price === "₹68 Lakhs" ||
-        property.price === "₹75 Lakhs" ||
-        property.price === "₹85 Lakhs";
+        property.price.includes("45") ||
+        property.price.includes("40") ||
+        property.price.includes("35");
     }
 
-    if (budget === "₹1 Crore - ₹2 Crores") {
+    if (budget === "50 Lakhs - 1 Crore") {
       budgetMatch =
-        property.price === "₹1.1 Crores" ||
-        property.price === "₹1.2 Crores";
+        property.price.includes("68") ||
+        property.price.includes("75") ||
+        property.price.includes("85");
     }
 
-    return (
-      locationMatch &&
-      cityMatch &&
-      categoryMatch &&
-      budgetMatch
-    );
+    if (budget === "Above 1 Crore") {
+      budgetMatch =
+        property.price.includes("1.1") ||
+        property.price.includes("1.2");
+    }
+
+    return locationMatch && categoryMatch && budgetMatch;
   });
 
-  const handleCityClick = (cityName) => {
-    setCity(cityName);
-    setLocation("");
-    window.scrollTo({
-      top: document.querySelector(".buy-properties-section")?.offsetTop || 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div className="buy-page">
-
+    <>
       <Navbar />
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+      <main className="buy-page">
 
-      <section className="buy-reference-hero">
+        {/* HERO */}
 
-        <div className="buy-reference-overlay">
+        <section className="buy-hero">
+          <div className="buy-hero-content">
+            <span className="section-label">BUY PROPERTY</span>
 
-          <div className="buy-reference-content">
-
-            <h1>Find a Home Find Happiness</h1>
+            <h1>Find Your Perfect Property</h1>
 
             <p>
-              Discover beautiful real estate properties across India
+              Explore apartments, villas, houses and plots available for sale.
             </p>
+          </div>
+        </section>
 
-            {/* LIST / MAP */}
+        {/* FILTERS */}
 
-            <div className="buy-view-tabs">
+        <section className="buy-filter-section">
+          <div className="buy-filters">
 
-              <button
-                className={
-                  activeTab === "list"
-                    ? "buy-view-tab active"
-                    : "buy-view-tab"
-                }
-                onClick={() => setActiveTab("list")}
-              >
-                ☷ List
-              </button>
-
-              <button
-                className={
-                  activeTab === "map"
-                    ? "buy-view-tab active"
-                    : "buy-view-tab"
-                }
-                onClick={() => setActiveTab("map")}
-              >
-                ⌖ Map
-              </button>
-
+            <div className="buy-filter">
+              <label>Location</label>
+              <input
+                type="text"
+                placeholder="Search city"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
             </div>
 
-            {/* SEARCH */}
-
-            <div className="buy-reference-search">
-
-              <div className="buy-city-select">
-
-                <span>⌖</span>
-
-                <select
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                >
-                  <option>All Cities</option>
-                  <option>Hyderabad</option>
-                  <option>Pune</option>
-                  <option>Bengaluru</option>
-                  <option>Mumbai</option>
-                  <option>Delhi</option>
-                  <option>Chennai</option>
-                </select>
-
-              </div>
-
-              <div className="buy-location-input">
-
-                <input
-                  type="text"
-                  placeholder="Enter a location, builder or project"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-
-              </div>
-
-              <button
-                className="buy-reference-search-button"
-                onClick={() =>
-                  document
-                    .querySelector(".buy-properties-section")
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                    })
-                }
-              >
-                🔍 Search
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* DOWN ARROW */}
-
-        <button
-          className="buy-down-arrow"
-          onClick={() =>
-            document
-              .querySelector(".buy-city-section")
-              ?.scrollIntoView({
-                behavior: "smooth",
-              })
-          }
-        >
-          ↓
-        </button>
-
-      </section>
-
-
-      {/* =====================================================
-          INDIA CITIES
-      ===================================================== */}
-
-      <section className="buy-city-section">
-
-        <div className="buy-city-container">
-
-          <p className="buy-city-heading">
-            Property in India - Find your home in 12+ cities across India
-          </p>
-
-          <div className="buy-city-grid">
-
-            {cities.map((item) => (
-              <button
-                className="buy-city-card"
-                key={item.name}
-                onClick={() => handleCityClick(item.name)}
-              >
-
-                <img
-                  src={item.image}
-                  alt={item.name}
-                />
-
-                <div className="buy-city-overlay">
-                  <span>Projects in {item.name}</span>
-                </div>
-
-              </button>
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FILTERS
-      ===================================================== */}
-
-      <section className="buy-filter-section">
-
-        <div className="buy-filter-container">
-
-          <div className="buy-filter-title">
-
-            <div>
-              <span className="buy-small-label">
-                BUY PROPERTIES
-              </span>
-
-              <h2>Find Your Property</h2>
-            </div>
-
-            <span className="buy-result-count">
-              {filteredProperties.length} Properties
-            </span>
-
-          </div>
-
-
-          <div className="buy-filter-bar">
-
-            <div className="buy-filter-item">
-
+            <div className="buy-filter">
               <label>Property Type</label>
 
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">All Types</option>
+                <option value="All">All Types</option>
                 <option value="Apartment">Apartment</option>
                 <option value="Villa">Villa</option>
                 <option value="Independent House">
@@ -371,147 +164,85 @@ function Buy() {
                 </option>
                 <option value="Plot">Plot</option>
               </select>
-
             </div>
 
-
-            <div className="buy-filter-item">
-
+            <div className="buy-filter">
               <label>Budget</label>
 
               <select
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
               >
-                <option value="">Any Budget</option>
-
-                <option value="Below ₹50 Lakhs">
-                  Below ₹50 Lakhs
+                <option value="All">Any Budget</option>
+                <option value="Under 50 Lakhs">
+                  Under ₹50 Lakhs
                 </option>
-
-                <option value="₹50 Lakhs - ₹1 Crore">
+                <option value="50 Lakhs - 1 Crore">
                   ₹50 Lakhs - ₹1 Crore
                 </option>
-
-                <option value="₹1 Crore - ₹2 Crores">
-                  ₹1 Crore - ₹2 Crores
+                <option value="Above 1 Crore">
+                  Above ₹1 Crore
                 </option>
-
               </select>
-
             </div>
 
-
-            <button
-              className="buy-clear-button"
-              onClick={() => {
-                setLocation("");
-                setCity("All Cities");
-                setCategory("");
-                setBudget("");
-              }}
-            >
-              Clear Filters
-            </button>
-
           </div>
+        </section>
 
-        </div>
+        {/* PROPERTIES */}
 
-      </section>
+        <section className="buy-properties">
 
-
-      {/* =====================================================
-          PROPERTY LIST
-      ===================================================== */}
-
-      <section className="buy-properties-section">
-
-        <div className="buy-properties-container">
-
-          <div className="buy-properties-heading">
-
+          <div className="buy-section-heading">
             <div>
-
-              <span className="buy-small-label">
-                PROPERTIES
-              </span>
+              <span className="section-label">PROPERTY LISTINGS</span>
 
               <h2>Properties for Sale</h2>
-
             </div>
 
+            <p>
+              {filteredProperties.length} properties found
+            </p>
           </div>
 
-
-          {activeTab === "map" ? (
-
-            <div className="buy-map-placeholder">
-
-              <div className="buy-map-icon">
-                ⌖
-              </div>
-
-              <h3>Property Map</h3>
-
-              <p>
-                Map view will be connected to the property
-                location service in the next stage.
-              </p>
-
-              <button
-                onClick={() => setActiveTab("list")}
-              >
-                View Property List
-              </button>
-
-            </div>
-
-          ) : filteredProperties.length > 0 ? (
+          {filteredProperties.length > 0 ? (
 
             <div className="buy-property-grid">
 
               {filteredProperties.map((property) => (
 
-                <article
-                  className="buy-property-card"
-                  key={property.id}
-                >
+                <div className="buy-property-card" key={property.id}>
 
-                  <div className="buy-property-image-wrapper">
+                  <div className="buy-property-image">
 
                     <img
                       src={property.image}
                       alt={property.title}
                     />
 
-                    <span className="buy-property-badge">
+                    <span className="buy-sale-badge">
                       For Sale
                     </span>
 
-                    <button className="buy-favorite">
+                    <button className="buy-heart">
                       ♡
                     </button>
 
                   </div>
 
-
                   <div className="buy-property-content">
 
-                    <div className="buy-property-price">
+                    <div className="buy-price">
                       {property.price}
                     </div>
 
-                    <h3>
-                      {property.title}
-                    </h3>
+                    <h3>{property.title}</h3>
 
-                    <p className="buy-property-location">
+                    <p className="buy-location">
                       📍 {property.location}
                     </p>
 
-
-                    <div className="buy-property-details">
+                    <div className="buy-details">
 
                       <span>
                         🛏 {property.beds} Beds
@@ -527,19 +258,13 @@ function Buy() {
 
                     </div>
 
-
-                    <button
-                      className="buy-view-button"
-                      onClick={() =>
-                        navigate("/property-details")
-                      }
-                    >
-                      View Details →
+                    <button className="buy-view-button">
+                      View Details
                     </button>
 
                   </div>
 
-                </article>
+                </div>
 
               ))}
 
@@ -549,35 +274,20 @@ function Buy() {
 
             <div className="buy-no-results">
 
-              <h3>
-                No properties found
-              </h3>
+              <h3>No properties found</h3>
 
               <p>
-                Try changing your location,
-                city, property type or budget.
+                Try changing your location, property type or budget.
               </p>
-
-              <button
-                onClick={() => {
-                  setLocation("");
-                  setCity("All Cities");
-                  setCategory("");
-                  setBudget("");
-                }}
-              >
-                Clear Filters
-              </button>
 
             </div>
 
           )}
 
-        </div>
+        </section>
 
-      </section>
-
-    </div>
+      </main>
+    </>
   );
 }
 

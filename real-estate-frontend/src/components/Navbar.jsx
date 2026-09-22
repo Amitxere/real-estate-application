@@ -26,6 +26,7 @@ function Navbar() {
         {/* NAVIGATION */}
         <nav className="navbar-links">
 
+          {/* HOME */}
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -35,6 +36,7 @@ function Navbar() {
             Home
           </NavLink>
 
+          {/* BUY */}
           <NavLink
             to="/buy"
             className={({ isActive }) =>
@@ -44,6 +46,7 @@ function Navbar() {
             Buy
           </NavLink>
 
+          {/* RENT */}
           <NavLink
             to="/rent"
             className={({ isActive }) =>
@@ -53,6 +56,7 @@ function Navbar() {
             Rent
           </NavLink>
 
+          {/* SELL */}
           <NavLink
             to="/sell"
             className={({ isActive }) =>
@@ -62,6 +66,7 @@ function Navbar() {
             Sell
           </NavLink>
 
+          {/* CONTACT */}
           <NavLink
             to="/contact"
             className={({ isActive }) =>
@@ -76,14 +81,17 @@ function Navbar() {
         {/* RIGHT SIDE */}
         <div className="navbar-actions">
 
+          {/* FAVORITES */}
           <button
             className="favorite-nav-button"
             onClick={() => navigate("/favorites")}
+            title="Favorites"
           >
             ♡
             <span className="favorite-count">0</span>
           </button>
 
+          {/* LOGIN */}
           <button
             className="login-button"
             onClick={() => navigate("/login")}
@@ -91,6 +99,7 @@ function Navbar() {
             Login
           </button>
 
+          {/* REGISTER */}
           <button
             className="register-button"
             onClick={() => navigate("/register")}
